@@ -2,132 +2,132 @@
 #define Graph_h
 #include <iostream>
 using namespace std;
-
+//1
 const int DefaultVertices = 30;
 
 template <class T, class E>
-struct Edge { // ±ß½áµãµÄ¶¨Òå
-	int dest; // ±ßµÄÁíÒ»¶¥µãÎ»ÖÃ
-	E cost; // ±íÉÏµÄÈ¨Öµ
-	Edge<T, E>* link; // ÏÂÒ»Ìõ±ßÁ´Ö¸Õë
+struct Edge { // è¾¹ç»“ç‚¹çš„å®šä¹‰
+	int dest; // è¾¹çš„å¦ä¸€é¡¶ç‚¹ä½ç½®
+	E cost; // è¡¨ä¸Šçš„æƒå€¼
+	Edge<T, E>* link; // ä¸‹ä¸€æ¡è¾¹é“¾æŒ‡é’ˆ
 };
 
 template <class T, class E>
-struct Vertex { // ¶¥µãµÄ¶¨Òå
-	T data; // ¶¥µãµÄÃû×Ö
-	Edge<T, E>* adj; // ±ßÁ´±íµÄÍ·Ö¸Õë
+struct Vertex { // é¡¶ç‚¹çš„å®šä¹‰
+	T data; // é¡¶ç‚¹çš„åå­—
+	Edge<T, E>* adj; // è¾¹é“¾è¡¨çš„å¤´æŒ‡é’ˆ
 };
 
 template <class T, class E>
 class Graphlnk {
 public:
-	const E maxWeight = 100000; // ´ú±íÎŞÇî´óµÄÖµ£¨=¡Ş£©
-	Graphlnk(int sz = DefaultVertices); // ¹¹Ôìº¯Êı
-	~Graphlnk(); // Îö¹¹º¯Êı
-	void inputGraph(); // ½¨Á¢ÁÚ½Ó±í±íÊ¾µÄÍ¼
-	void outputGraph(); // Êä³öÍ¼ÖĞµÄËùÓĞ¶¥µãºÍ±ßĞÅÏ¢
-	T getValue(int i); // È¡Î»ÖÃÎªiµÄ¶¥µãÖĞµÄÖµ
-	E getWeight(int v1, int v2); // ·µ»Ø±ß£¨v1£¬ v2£©ÉÏµÄÈ¨Öµ
-	bool insertVertex(const T& vertex); // ²åÈë¶¥µã
-	bool insertEdge(int v1, int v2, E weight); // ²åÈë±ß
-	bool removeVertex(int v); // É¾³ı¶¥µã
-	bool removeEdge(int v1, int v2); // É¾³ı±ß
-	int getFirstNeighbor(int v); // È¡¶¥µãvµÄµÚÒ»¸öÁÚ½Ó¶¥µã
-	int getNextNeighbor(int v, int w); // È¡¶¥µãvµÄÁÚ½Ó¶¥µãwµÄÏÂÒ»ÁÚ½Ó¶¥µã
-	int getVertexPos(const T vertex); // ¸ø³ö¶¥µãvertexÔÚÍ¼ÖĞµÄÎ»ÖÃ
-	int numberOfVertices(); // µ±Ç°¶¥µãÊı
+	const E maxWeight = 100000; // ä»£è¡¨æ— ç©·å¤§çš„å€¼ï¼ˆ=âˆï¼‰
+	Graphlnk(int sz = DefaultVertices); // æ„é€ å‡½æ•°
+	~Graphlnk(); // ææ„å‡½æ•°
+	void inputGraph(); // å»ºç«‹é‚»æ¥è¡¨è¡¨ç¤ºçš„å›¾
+	void outputGraph(); // è¾“å‡ºå›¾ä¸­çš„æ‰€æœ‰é¡¶ç‚¹å’Œè¾¹ä¿¡æ¯
+	T getValue(int i); // å–ä½ç½®ä¸ºiçš„é¡¶ç‚¹ä¸­çš„å€¼
+	E getWeight(int v1, int v2); // è¿”å›è¾¹ï¼ˆv1ï¼Œ v2ï¼‰ä¸Šçš„æƒå€¼
+	bool insertVertex(const T& vertex); // æ’å…¥é¡¶ç‚¹
+	bool insertEdge(int v1, int v2, E weight); // æ’å…¥è¾¹
+	bool removeVertex(int v); // åˆ é™¤é¡¶ç‚¹
+	bool removeEdge(int v1, int v2); // åˆ é™¤è¾¹
+	int getFirstNeighbor(int v); // å–é¡¶ç‚¹vçš„ç¬¬ä¸€ä¸ªé‚»æ¥é¡¶ç‚¹
+	int getNextNeighbor(int v, int w); // å–é¡¶ç‚¹vçš„é‚»æ¥é¡¶ç‚¹wçš„ä¸‹ä¸€é‚»æ¥é¡¶ç‚¹
+	int getVertexPos(const T vertex); // ç»™å‡ºé¡¶ç‚¹vertexåœ¨å›¾ä¸­çš„ä½ç½®
+	int numberOfVertices(); // å½“å‰é¡¶ç‚¹æ•°
 private:
-	int maxVertices; // Í¼ÖĞ×î´óµÄ¶¥µãÊı
-	int numEdges; // µ±Ç°±ßÊı
-	int numVertices; // µ±Ç°¶¥µãÊı
-	Vertex<T, E>* nodeTable; // ¶¥µã±í(¸÷±ßÁ´±íµÄÍ·½áµã)
+	int maxVertices; // å›¾ä¸­æœ€å¤§çš„é¡¶ç‚¹æ•°
+	int numEdges; // å½“å‰è¾¹æ•°
+	int numVertices; // å½“å‰é¡¶ç‚¹æ•°
+	Vertex<T, E>* nodeTable; // é¡¶ç‚¹è¡¨(å„è¾¹é“¾è¡¨çš„å¤´ç»“ç‚¹)
 };
 
-// ¹¹Ôìº¯Êı:½¨Á¢Ò»¸ö¿ÕµÄÁÚ½Ó±í
+// æ„é€ å‡½æ•°:å»ºç«‹ä¸€ä¸ªç©ºçš„é‚»æ¥è¡¨
 template <class T, class E>
 Graphlnk<T, E>::Graphlnk(int sz) {
 	maxVertices = sz;
 	numVertices = 0;
 	numEdges = 0;
-	nodeTable = new Vertex<T, E>[maxVertices]; // ´´½¨¶¥µã±íÊı×é
+	nodeTable = new Vertex<T, E>[maxVertices]; // åˆ›å»ºé¡¶ç‚¹è¡¨æ•°ç»„
 	if (nodeTable == NULL) {
-		cerr << "´æ´¢¿Õ¼ä·ÖÅä´íÎó£¡" << endl;
+		cerr << "å­˜å‚¨ç©ºé—´åˆ†é…é”™è¯¯ï¼" << endl;
 		exit(1);
 	}
 	for (int i = 0; i < maxVertices; i++)
 		nodeTable[i].adj = NULL;
 }
 
-// Îö¹¹º¯Êı
+// ææ„å‡½æ•°
 template <class T, class E>
 Graphlnk<T, E>::~Graphlnk() {
-	// É¾³ı¸÷±ßÁ´±íÖĞµÄ½áµã
+	// åˆ é™¤å„è¾¹é“¾è¡¨ä¸­çš„ç»“ç‚¹
 	for (int i = 0; i < numVertices; i++) {
-		Edge<T, E>* p = nodeTable[i].adj; // ÕÒµ½Æä¶ÔÓ¦Á´±íµÄÊ×½áµã
-		while (p != NULL) { // ²»¶ÏµØÉ¾³ıµÚÒ»¸ö½áµã
+		Edge<T, E>* p = nodeTable[i].adj; // æ‰¾åˆ°å…¶å¯¹åº”é“¾è¡¨çš„é¦–ç»“ç‚¹
+		while (p != NULL) { // ä¸æ–­åœ°åˆ é™¤ç¬¬ä¸€ä¸ªç»“ç‚¹
 			nodeTable[i].adj = p->link;
 			delete p;
 			p = nodeTable[i].adj;
 		}
 	}
-	delete[]nodeTable; // É¾³ı¶¥µã±íÊı×é
+	delete[]nodeTable; // åˆ é™¤é¡¶ç‚¹è¡¨æ•°ç»„
 }
 
-// ½¨Á¢ÁÚ½Ó±í±íÊ¾µÄÍ¼
+// å»ºç«‹é‚»æ¥è¡¨è¡¨ç¤ºçš„å›¾
 template <class T, class E>
 void Graphlnk<T, E>::inputGraph() {
-	int n, m; // ´æ´¢¶¥µãÊ÷ºÍ±ßÊı
+	int n, m; // å­˜å‚¨é¡¶ç‚¹æ ‘å’Œè¾¹æ•°
 	int i, j, k;
-	T e1, e2; // ¶¥µã
-	E weight; // ±ßµÄÈ¨Öµ
+	T e1, e2; // é¡¶ç‚¹
+	E weight; // è¾¹çš„æƒå€¼
 
-	cout << "ÇëÊäÈë¶¥µãÊıºÍ±ßÊı£º" << endl;
+	cout << "è¯·è¾“å…¥é¡¶ç‚¹æ•°å’Œè¾¹æ•°ï¼š" << endl;
 	cin >> n >> m;
-	cout << "ÇëÊäÈë¸÷¶¥µã£º" << endl;
+	cout << "è¯·è¾“å…¥å„é¡¶ç‚¹ï¼š" << endl;
 	for (i = 0; i < n; i++) {
 		cin >> e1;
-		insertVertex(e1); // ²åÈë¶¥µã
+		insertVertex(e1); // æ’å…¥é¡¶ç‚¹
 	}
 
-	cout << "ÇëÊäÈëÍ¼µÄ¸÷±ßµÄĞÅÏ¢£º" << endl;
+	cout << "è¯·è¾“å…¥å›¾çš„å„è¾¹çš„ä¿¡æ¯ï¼š" << endl;
 	i = 0;
 	while (i < m) {
 		cin >> e1 >> e2 >> weight;
 		j = getVertexPos(e1);
 		k = getVertexPos(e2);
 		if (j == -1 || k == -1)
-			cout << "±ßÁ½¶ËµãĞÅÏ¢ÓĞÎó£¬ÇëÖØĞÂÊäÈë£¡" << endl;
+			cout << "è¾¹ä¸¤ç«¯ç‚¹ä¿¡æ¯æœ‰è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥ï¼" << endl;
 		else {
-			insertEdge(j, k, weight); // ²åÈë±ß
+			insertEdge(j, k, weight); // æ’å…¥è¾¹
 			insertEdge(k, j, weight);
 			i++;
 		}
 	} // while
 }
 
-// Êä³öÍ¼ÖĞµÄËùÓĞ¶¥µãºÍ±ßĞÅÏ¢
+// è¾“å‡ºå›¾ä¸­çš„æ‰€æœ‰é¡¶ç‚¹å’Œè¾¹ä¿¡æ¯
 template <class T, class E>
 void Graphlnk<T, E>::outputGraph() {
 	int n, m, i, j;
-	T e1, e2; // ¶¥µã
-	E weight; // È¨Öµ
+	T e1, e2; // é¡¶ç‚¹
+	E weight; // æƒå€¼
 
 	n = numVertices;
 	m = numEdges;
-	cout << "Í¼ÖĞµÄ¶¥µãÊıÎª" << n << ",±ßÊıÎª" << m << endl;
+	cout << "å›¾ä¸­çš„é¡¶ç‚¹æ•°ä¸º" << n << ",è¾¹æ•°ä¸º" << m << endl;
 	for (i = 0; i < n; i++) {
 		for (j = 0; j < n; j++) {
-			weight = getWeight(i, j); // È¡±ßµÄÈ¨Öµ
-			if (weight > 0 && weight < maxWeight) { // ÓĞĞ§
-				e1 = getValue(i); // ¶¥µã
+			weight = getWeight(i, j); // å–è¾¹çš„æƒå€¼
+			if (weight > 0 && weight < maxWeight) { // æœ‰æ•ˆ
+				e1 = getValue(i); // é¡¶ç‚¹
 				e2 = getValue(j);
 				cout << "(" << e1 << "," << e2 << "," << weight << ")" << endl;
 			}
-		} // ÄÚÑ­»·for
-	} // ÍâÑ­»·for
+		} // å†…å¾ªç¯for
+	} // å¤–å¾ªç¯for
 }
 
-// È¡Î»ÖÃÎªiµÄ¶¥µãÖĞµÄÖµ
+// å–ä½ç½®ä¸ºiçš„é¡¶ç‚¹ä¸­çš„å€¼
 template <class T, class E>
 T Graphlnk<T, E>::getValue(int i) {
 	if (i >= 0 && i < numVertices)
@@ -135,49 +135,49 @@ T Graphlnk<T, E>::getValue(int i) {
 	return NULL;
 }
 
-// ·µ»Ø±ß£¨v1£¬ v2£©ÉÏµÄÈ¨Öµ
+// è¿”å›è¾¹ï¼ˆv1ï¼Œ v2ï¼‰ä¸Šçš„æƒå€¼
 template <class T, class E>
 E Graphlnk<T, E>::getWeight(int v1, int v2) {
 	if (v1 != -1 && v2 != -1) {
-		Edge<T, E>* p = nodeTable[v1].adj; // v1µÄµÚÒ»Ìõ¹ØÁªµÄ±ß
-		while (p != NULL && p->dest != v2) { // Ñ°ÕÒÁÚ½Ó¶¥µãv2
+		Edge<T, E>* p = nodeTable[v1].adj; // v1çš„ç¬¬ä¸€æ¡å…³è”çš„è¾¹
+		while (p != NULL && p->dest != v2) { // å¯»æ‰¾é‚»æ¥é¡¶ç‚¹v2
 			p = p->link;
 		}
 		if (p != NULL)
 			return p->cost;
 	}
-	return 0; // ±ß(v1, v2)²»´æÔÚ
+	return 0; // è¾¹(v1, v2)ä¸å­˜åœ¨
 }
 
-// ²åÈë¶¥µã
+// æ’å…¥é¡¶ç‚¹
 template <class T, class E>
 bool Graphlnk<T, E>::insertVertex(const T & vertex) {
-	if (numVertices == maxVertices) // ¶¥µã±íÂú£¬²»ÄÜ²åÈë
+	if (numVertices == maxVertices) // é¡¶ç‚¹è¡¨æ»¡ï¼Œä¸èƒ½æ’å…¥
 		return false;
-	nodeTable[numVertices].data = vertex; // ²åÈëÔÚ±íµÄ×îºó
+	nodeTable[numVertices].data = vertex; // æ’å…¥åœ¨è¡¨çš„æœ€å
 	numVertices++;
 	return true;
 }
 
-// ²åÈë±ß
+// æ’å…¥è¾¹
 template <class T, class E>
 bool Graphlnk<T, E>::insertEdge(int v1, int v2, E weight) {
 	if (v1 >= 0 && v1 < numVertices && v2 >= 0 && v2 < numVertices) {
-		Edge<T, E>* q, * p = nodeTable[v1].adj; // v1¶ÔÓ¦µÄ±ßÁ´±íÍ·Ö¸Õë
-		while (p != NULL && p->dest != v2) // Ñ°ÕÒÁÚ½Ó¶¥µãv2
+		Edge<T, E>* q, * p = nodeTable[v1].adj; // v1å¯¹åº”çš„è¾¹é“¾è¡¨å¤´æŒ‡é’ˆ
+		while (p != NULL && p->dest != v2) // å¯»æ‰¾é‚»æ¥é¡¶ç‚¹v2
 			p = p->link;
-		if (p != NULL) // ÒÑ´æÔÚ¸Ã±ß£¬²»²åÈë
+		if (p != NULL) // å·²å­˜åœ¨è¯¥è¾¹ï¼Œä¸æ’å…¥
 			return false;
-		p = new Edge<T, E>; // ´´½¨ĞÂ½áµã
+		p = new Edge<T, E>; // åˆ›å»ºæ–°ç»“ç‚¹
 		p->dest = v2;
 		p->cost = weight;
-		p->link = nodeTable[v1].adj; // Á´Èëv1±ßÁ´±í
+		p->link = nodeTable[v1].adj; // é“¾å…¥v1è¾¹é“¾è¡¨
 		nodeTable[v1].adj = p;
 
 		q = new Edge<T, E>;
 		q->dest = v1;
 		q->cost = weight;
-		q->link = nodeTable[v2].adj; // Á´Èëv2±ßÁ´±í
+		q->link = nodeTable[v2].adj; // é“¾å…¥v2è¾¹é“¾è¡¨
 		nodeTable[v2].adj = q;
 		numEdges++;
 		return true;
@@ -185,114 +185,114 @@ bool Graphlnk<T, E>::insertEdge(int v1, int v2, E weight) {
 	return false;
 }
 
-// É¾³ı¶¥µã
+// åˆ é™¤é¡¶ç‚¹
 template <class T, class E>
 bool Graphlnk<T, E>::removeVertex(int v) {
 	if (numVertices == 1 || v < 0 || v > numVertices)
-		return false; // ±í¿Õ»ò¶¥µãºÅ³¬³ö·¶Î§
+		return false; // è¡¨ç©ºæˆ–é¡¶ç‚¹å·è¶…å‡ºèŒƒå›´
 
 	Edge<T, E> * p, *s, *t;
-	int k; // ´æ´¢ÁÚ½Ó¶¥µã
+	int k; // å­˜å‚¨é‚»æ¥é¡¶ç‚¹
 	while (nodeTable[v].adj != NULL) {
 		p = nodeTable[v].adj;
-		k = p->dest; // È¡ÁÚ½Ó¶¥µãk
-		s = nodeTable[k].adj; // ÕÒ¶Ô³Æ´æ·ÅµÄ±ß½áµã
+		k = p->dest; // å–é‚»æ¥é¡¶ç‚¹k
+		s = nodeTable[k].adj; // æ‰¾å¯¹ç§°å­˜æ”¾çš„è¾¹ç»“ç‚¹
 		t = NULL;
 		while (s != NULL && s->dest != v) {
 			t = s;
 			s = s->link;
 		}
-		if (s != NULL) { // É¾³ı¶Ô³Æ´æ·ÅµÄ±ß½áµã
-			if (t == NULL) // É¾³ıµÄÊÇµÚÒ»¸öÁÚ½Ó¶¥µã
+		if (s != NULL) { // åˆ é™¤å¯¹ç§°å­˜æ”¾çš„è¾¹ç»“ç‚¹
+			if (t == NULL) // åˆ é™¤çš„æ˜¯ç¬¬ä¸€ä¸ªé‚»æ¥é¡¶ç‚¹
 				nodeTable[k].adj = s->link;
 			else
 				t->link = s->link;
 			delete s;
 		}
-		nodeTable[v].adj = p->link; // Çå³ı¶¥µãvµÄ±ßÁ´±í½áµã
+		nodeTable[v].adj = p->link; // æ¸…é™¤é¡¶ç‚¹vçš„è¾¹é“¾è¡¨ç»“ç‚¹
 		delete p;
-		numEdges--; // Óë¶¥µãvÏà¹ØÁªµÄ±ßÊı¼õ1
-	} // while½áÊø
-	numVertices--; // Í¼µÄ¶¥µã¸öÊı¼õ1
-	nodeTable[v].data = nodeTable[numVertices].data; // Ìî²¹
+		numEdges--; // ä¸é¡¶ç‚¹vç›¸å…³è”çš„è¾¹æ•°å‡1
+	} // whileç»“æŸ
+	numVertices--; // å›¾çš„é¡¶ç‚¹ä¸ªæ•°å‡1
+	nodeTable[v].data = nodeTable[numVertices].data; // å¡«è¡¥
 	p = nodeTable[v].adj = nodeTable[numVertices].adj;
-	// Òª½«Ìî²¹µÄ¶¥µã¶ÔÓ¦µÄÎ»ÖÃ¸ÄĞ´
+	// è¦å°†å¡«è¡¥çš„é¡¶ç‚¹å¯¹åº”çš„ä½ç½®æ”¹å†™
 	while (p != NULL) {
-		s = nodeTable[p->dest].adj; // ¶Ô³Æ±ßÁ´±í½áµã
+		s = nodeTable[p->dest].adj; // å¯¹ç§°è¾¹é“¾è¡¨ç»“ç‚¹
 		while (s != NULL) {
-			if (s->dest == numVertices) { // ÕÒµ½¶Ô³Æ±ß
-				s->dest = v; // ĞŞ¸ÄÖ¸Ïòv
+			if (s->dest == numVertices) { // æ‰¾åˆ°å¯¹ç§°è¾¹
+				s->dest = v; // ä¿®æ”¹æŒ‡å‘v
 				break;
 			}
 			s = s->link;
 		}
-		p = p->link; // Ö¸ÏòÏÂÒ»¸öÁÚ½Ó¶¥µã
+		p = p->link; // æŒ‡å‘ä¸‹ä¸€ä¸ªé‚»æ¥é¡¶ç‚¹
 	}
 	return true;
 }
 
-// É¾³ı±ß
+// åˆ é™¤è¾¹
 template <class T, class E>
 bool Graphlnk<T, E>::removeEdge(int v1, int v2) {
 	if (v1 != -1 && v2 != -1) {
 		Edge<T, E>* p = nodeTable[v1].adj, * q = NULL, * s = p;
-		while (p != NULL && p->dest != v2) { // v1¶ÔÓ¦±ßÁ´±íÖĞÕÒ±»É¾³ı±ß
+		while (p != NULL && p->dest != v2) { // v1å¯¹åº”è¾¹é“¾è¡¨ä¸­æ‰¾è¢«åˆ é™¤è¾¹
 			q = p;
 			p = p->link;
 		}
-		if (p != NULL) { // ÕÒµ½±»É¾³ı±ß½áµã
-			if (p == s) // ¸Ã½áµãÊÇ±ßÁ´±íµÄÊ×½áµã
+		if (p != NULL) { // æ‰¾åˆ°è¢«åˆ é™¤è¾¹ç»“ç‚¹
+			if (p == s) // è¯¥ç»“ç‚¹æ˜¯è¾¹é“¾è¡¨çš„é¦–ç»“ç‚¹
 				nodeTable[v1].adj = p->link;
 			else
-				q->link = p->link; // ²»ÊÇ£¬ÖØĞÂÁ´½Ó
+				q->link = p->link; // ä¸æ˜¯ï¼Œé‡æ–°é“¾æ¥
 			delete p;
 		}
-		else // Ã»ÕÒµ½
+		else // æ²¡æ‰¾åˆ°
 			return false;
 
-		// v2¶ÔÓ¦±ßÁ´±íÖĞÉ¾³ı
+		// v2å¯¹åº”è¾¹é“¾è¡¨ä¸­åˆ é™¤
 		p = nodeTable[v2].adj;
 		q = NULL;
-		s = p; // ±£´æÊ×½áµã
-		while (p != NULL && p->dest != v1) { // Ñ°ÕÒ±ßÁ´±íÖĞÒªÉ¾³ıµÄ½áµã
+		s = p; // ä¿å­˜é¦–ç»“ç‚¹
+		while (p != NULL && p->dest != v1) { // å¯»æ‰¾è¾¹é“¾è¡¨ä¸­è¦åˆ é™¤çš„ç»“ç‚¹
 			q = p;
 			p = p->link;
 		}
-		if (p == s) // É¾³ıµÄ¸Ã½áµãÊÇ±ßÁ´±íµÄÊ×½áµã
+		if (p == s) // åˆ é™¤çš„è¯¥ç»“ç‚¹æ˜¯è¾¹é“¾è¡¨çš„é¦–ç»“ç‚¹
 			nodeTable[v2].adj = p->link;
 		else
-			q->link = p->link; // ²»ÊÇ£¬ÖØĞÂÁ´½Ó
+			q->link = p->link; // ä¸æ˜¯ï¼Œé‡æ–°é“¾æ¥
 		delete p;
 		return true;
 	}
-	return false; // Ã»ÓĞÕÒµ½½áµã
+	return false; // æ²¡æœ‰æ‰¾åˆ°ç»“ç‚¹
 }
 
-// È¡¶¥µãvµÄµÚÒ»¸öÁÚ½Ó¶¥µã
+// å–é¡¶ç‚¹vçš„ç¬¬ä¸€ä¸ªé‚»æ¥é¡¶ç‚¹
 template <class T, class E>
 int Graphlnk<T, E>::getFirstNeighbor(int v) {
 	if (v != -1) {
-		Edge<T, E>* p = nodeTable[v].adj; // ¶ÔÓ¦Á´±íµÚÒ»¸ö±ß½áµã
-		if (p != NULL) // ´æÔÚ£¬·µ»ØµÚÒ»¸öÁÚ½Ó¶¥µã
+		Edge<T, E>* p = nodeTable[v].adj; // å¯¹åº”é“¾è¡¨ç¬¬ä¸€ä¸ªè¾¹ç»“ç‚¹
+		if (p != NULL) // å­˜åœ¨ï¼Œè¿”å›ç¬¬ä¸€ä¸ªé‚»æ¥é¡¶ç‚¹
 			return p->dest;
 	}
-	return -1; // µÚÒ»¸öÁÚ½Ó¶¥µã²»´æÔÚ
+	return -1; // ç¬¬ä¸€ä¸ªé‚»æ¥é¡¶ç‚¹ä¸å­˜åœ¨
 }
 
-// È¡¶¥µãvµÄÁÚ½Ó¶¥µãwµÄÏÂÒ»ÁÚ½Ó¶¥µã
+// å–é¡¶ç‚¹vçš„é‚»æ¥é¡¶ç‚¹wçš„ä¸‹ä¸€é‚»æ¥é¡¶ç‚¹
 template <class T, class E>
 int Graphlnk<T, E>::getNextNeighbor(int v, int w) {
 	if (v != -1) {
-		Edge<T, E>* p = nodeTable[v].adj; // ¶ÔÓ¦Á´±íµÚÒ»¸ö±ß½áµã
-		while (p != NULL && p->dest != w) // Ñ°ÕÒÁÚ½Ó¶¥µãw
+		Edge<T, E>* p = nodeTable[v].adj; // å¯¹åº”é“¾è¡¨ç¬¬ä¸€ä¸ªè¾¹ç»“ç‚¹
+		while (p != NULL && p->dest != w) // å¯»æ‰¾é‚»æ¥é¡¶ç‚¹w
 			p = p->link;
 		if (p != NULL && p->link != NULL)
-			return p->link->dest;  // ·µ»ØÏÂÒ»¸öÁÚ½Ó¶¥µã
+			return p->link->dest;  // è¿”å›ä¸‹ä¸€ä¸ªé‚»æ¥é¡¶ç‚¹
 	}
-	return -1; // ÏÂÒ»¸öÁÚ½Ó¶¥µã²»´æÔÚ
+	return -1; // ä¸‹ä¸€ä¸ªé‚»æ¥é¡¶ç‚¹ä¸å­˜åœ¨
 }
 
-// ¸ø³ö¶¥µãvertexÔÚÍ¼ÖĞµÄÎ»ÖÃ
+// ç»™å‡ºé¡¶ç‚¹vertexåœ¨å›¾ä¸­çš„ä½ç½®
 template <class T, class E>
 int Graphlnk<T, E>::getVertexPos(const T vertex) {
 	for (int i = 0; i < numVertices; i++)
@@ -301,7 +301,7 @@ int Graphlnk<T, E>::getVertexPos(const T vertex) {
 	return -1;
 }
 
-// µ±Ç°¶¥µãÊı
+// å½“å‰é¡¶ç‚¹æ•°
 template <class T, class E>
 int Graphlnk<T, E>::numberOfVertices() {
 	return numVertices;
