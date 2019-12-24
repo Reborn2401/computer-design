@@ -63,7 +63,7 @@ void f_table()
 	r_graph.n_output();
 	cout << "请输入路由器的编号：\n";
 	cin >> id;
-	t = r_graph.get_t(id);
+	t = r_graph.get_t(id); if (t == NULL)return;
 	cout << *t->get_rid()<<endl;
 	cout << *t;
 }

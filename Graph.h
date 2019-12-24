@@ -91,7 +91,7 @@ void Graphlnk::inputGraph() {
 		if(insertRouter(e1))strncpy_s(nodeTable[numRouters-1].net,net,20); // 插入顶点
 	}
 
-	cout << "请输入图的各边的信息：(边1，边2，权值)" << endl;
+	cout << "请输入图的各边的信息：(路由器1，路由器2，距离)" << endl;
 	i = 0;
 	while (i < m) {
 		cin >> e1 >> e2 >> weight;
