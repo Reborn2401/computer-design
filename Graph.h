@@ -2,7 +2,7 @@
 #define Graph_h
 #include <iostream>
 using namespace std;
-
+//×¢ÊÍ
 const int DefaultVertices = 30;
 
 template <class T, class E>
