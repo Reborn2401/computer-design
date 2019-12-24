@@ -3,9 +3,9 @@
 #include <iostream>
 using namespace std;
 //×¢ÊÍ
-//×¢ÊÍ
-//×¢ÊÍ
-//2
+
+
+
 const int DefaultVertices = 30;
 
 template <class T, class E>
