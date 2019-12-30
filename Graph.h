@@ -6,7 +6,6 @@ using namespace std;
 
 const int DefaultVertices = 30;
 
-
 class Graphlnk {
 	friend class r_table;
 public:
