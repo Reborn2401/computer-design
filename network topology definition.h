@@ -1,6 +1,5 @@
 #pragma once
 
-
 #include<iostream>
 #include<string>
 
@@ -8,12 +7,12 @@ using namespace std;
 
 
 
-struct rtuple //Â·ÓÉ±íÔª×éÀà
+struct rtuple //è·¯ç”±è¡¨å…ƒç»„ç±»
 {
-	char destn[20];//Ä¿µÄÍøÂç
-	int distance;//¾àÀë
-	int next;//ÏÂÒ»Ìø
-	rtuple* link;//±íÖÐÏÂÒ»Ïî
+	char destn[20];//ç›®çš„ç½‘ç»œ
+	int distance;//è·ç¦»
+	int next;//ä¸‹ä¸€è·³
+	rtuple* link;//è¡¨ä¸­ä¸‹ä¸€é¡¹
 	rtuple() { link = NULL; }
 	rtuple(char* de,int d,int n,rtuple*l=NULL)
 		:distance(d), link(l),next(n) {
@@ -24,35 +23,35 @@ struct rtuple //Â·ÓÉ±íÔª×éÀà
 
 
 
-class r_table //Â·ÓÉ±íÀà
+class r_table //è·¯ç”±è¡¨ç±»
 {
 public:
 	r_table() { last = NULL; currentsize = 0; first = new rtuple;
-	}//¹¹Ôìº¯Êý
-	r_table(int id) { identi = id; first = new rtuple; last = NULL; currentsize = 0; }//¹¹Ôìº¯Êý
-	~r_table() ;//Îö¹¹º¯Êý
-	rtuple* getfirst() { return first; }//È¡µÚÒ»Ïî
-	int* get_rid() { return &identi; }//È¡Â·ÓÉ±í±àºÅ´æ´¢µØÖ·
+	}//æž„é€ å‡½æ•°
+	r_table(int id) { identi = id; first = new rtuple; last = NULL; currentsize = 0; }//æž„é€ å‡½æ•°
+	~r_table() ;//æžæž„å‡½æ•°
+	rtuple* getfirst() { return first; }//å–ç¬¬ä¸€é¡¹
+	int* get_rid() { return &identi; }//å–è·¯ç”±è¡¨ç¼–å·å­˜å‚¨åœ°å€
 	void size_add() { currentsize++; }
 	int getsize() { return currentsize; }
 private:
-	int identi;//Â·ÓÉÆ÷±àºÅ
-	rtuple* first;//µÚÒ»Ïî
-	rtuple* last;//×îºóÒ»Ïî
+	int identi;//è·¯ç”±å™¨ç¼–å·
+	rtuple* first;//ç¬¬ä¸€é¡¹
+	rtuple* last;//æœ€åŽä¸€é¡¹
 	int currentsize;
 	rtuple* search(char* d) { rtuple* p = first;
 	while (p != NULL) { if (!strcmp(d, p->destn))return p; p = p->link; }
 	 return p; }
-	friend ostream& operator<<(ostream& out, r_table& r);//Êä³öÂ·ÓÉ±í
+	friend ostream& operator<<(ostream& out, r_table& r);//è¾“å‡ºè·¯ç”±è¡¨
 };
 
 ostream& operator<<(ostream& out, r_table& r)
 {
 	rtuple* p = r.first;
-	out << "Â·ÓÉÆ÷£º" << r.identi << endl;
-	out << "µ±Ç°Â·ÓÉ±í³¤¶È£º" << r.currentsize << endl;
+	out << "è·¯ç”±å™¨ï¼š" << r.identi << endl;
+	out << "å½“å‰è·¯ç”±è¡¨é•¿åº¦ï¼š" << r.currentsize << endl;
 
-	out << "\tÄ¿µÄÍøÂç\t¾àÀë\tÏÂÒ»Ìø\n";
+	out << "\tç›®çš„ç½‘ç»œ\tè·ç¦»\tä¸‹ä¸€è·³\n";
 	for (int i = 0; i < r.currentsize; i++)
 	{
 		out <<"\t"<< p->destn << "       \t" << p->distance << "\t" << p->next << endl;
@@ -72,34 +71,34 @@ r_table::~r_table()
 	}
 }
 
-struct edge//±ß
+struct edge//è¾¹
 {
-	int router2;//ÁíÒ»¶¥µãÎ»ÖÃ
-	int distance;//¾àÀë
-	edge* link;//ÏÂÒ»Ìõ±ßÁ´Ö¸Õë
+	int router2;//å¦ä¸€é¡¶ç‚¹ä½ç½®
+	int distance;//è·ç¦»
+	edge* link;//ä¸‹ä¸€æ¡è¾¹é“¾æŒ‡é’ˆ
 	edge() { link = NULL; }
 	~edge(){}
 };
 
 
-struct router//Â·ÓÉÆ÷£¨¶¥µã£©
+struct router//è·¯ç”±å™¨ï¼ˆé¡¶ç‚¹ï¼‰
 {
-	int identi;//Â·ÓÉÆ÷±àºÅ
-	char net[20];//ÍøÂçºÅ
-	r_table* table;//Â·ÓÉ±íÍø
-	edge* ed;//±ßÁ´±íÍ·Ö¸Õë
+	int identi;//è·¯ç”±å™¨ç¼–å·
+	char net[20];//ç½‘ç»œå·
+	r_table* table;//è·¯ç”±è¡¨ç½‘
+	edge* ed;//è¾¹é“¾è¡¨å¤´æŒ‡é’ˆ
 	router() { ed = NULL; table = new r_table; }
 	router(int i, char* n) :identi(i) { strncpy_s(net, n, 20); ed = NULL; table = new r_table; }
-	void apply() { table = new r_table; }//ÉêÇëÒ»¸öÐÂµÄ±í
-	friend ostream& operator<<(ostream& out, router& r);//Êä³öÂ·ÓÉÆ÷ÒÔ¼°ËüµÄ±ßµÄÐÅÏ¢
+	void apply() { table = new r_table; }//ç”³è¯·ä¸€ä¸ªæ–°çš„è¡¨
+	friend ostream& operator<<(ostream& out, router& r);//è¾“å‡ºè·¯ç”±å™¨ä»¥åŠå®ƒçš„è¾¹çš„ä¿¡æ¯
 };
 
 ostream& operator<<(ostream& out, router& r)
 {
 	edge* p = r.ed;
-	cout << "Â·ÓÉÆ÷±àºÅ£º" << r.identi << endl;
-	cout << "ÍøÂçºÅ£º" << r.net << endl;
-	cout << "Ä¿µÄÂ·ÓÉÆ÷£º\t¾àÀë£º\n";
+	cout << "è·¯ç”±å™¨ç¼–å·ï¼š" << r.identi << endl;
+	cout << "ç½‘ç»œå·ï¼š" << r.net << endl;
+	cout << "ç›®çš„è·¯ç”±å™¨ï¼š\tè·ç¦»ï¼š\n";
 	while (p != NULL)
 	{
 		out << p->router2 << "\t" << p->distance << endl;
