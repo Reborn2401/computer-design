@@ -9,7 +9,6 @@
 ifstream fin;
 Graphlnk r_graph;
 
-
 using namespace std;
 
 void g_build();//创建网络拓扑图
